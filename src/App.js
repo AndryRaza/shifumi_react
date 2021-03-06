@@ -17,7 +17,9 @@ function App() {
       </Container>
 
       <Container className="mt-5">
-        <Player />
+        <Row className="row-cols-3" >
+          <Player />
+        </Row>
       </Container>
 
     </div>
