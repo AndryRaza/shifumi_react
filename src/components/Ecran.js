@@ -3,9 +3,7 @@ import cross from '../cross.svg';
 
 const Ecran = ({ img, light }) => {
 
-    const isImg = img ? (<img src={img} alt="" />) : (<img src={cross} alt="" />);
-
-
+    const isImg = img ? (<img src={img} alt="" />) : (<img src={cross} alt="Pas de play" />);  //Si le joueur n'a pas encore joué, on affiche une croix 
 
     return (
         <>
