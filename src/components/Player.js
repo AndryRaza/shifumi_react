@@ -15,7 +15,7 @@ const Player = (props) => {
 
     var coup_ia;
     //Fonction random ([| 0;max |[)
-    getRandomInt = (max) => {
+    const getRandomInt = (max) => {
         return Math.floor(Math.random() * Math.floor(max));
     }
 

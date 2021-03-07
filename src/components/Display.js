@@ -12,12 +12,12 @@ class Display extends Component {
     }
 
     //Fonction pour afficher le choix du coup du joueur
-    jeu = (coup_joueur,coup_ia) => {
+    jeu = (coup_joueur, coup_ia) => {
 
         this.setState({
-            ecran:[{ img: coup_joueur, light: ['black', 'black', 'black'] }, { img: null, light: ['black', 'black', 'black'] }]
+            ecran: [{ img: coup_joueur, light: ['black', 'black', 'black'] }, { img: null, light: ['black', 'black', 'black'] }]
         })
-      
+
     };
 
     render() {
@@ -41,7 +41,7 @@ class Display extends Component {
 
                 <Container className="mt-5">
                     <Row className="row-cols-3" >
-                        <Player leState={this.state} func={this.jeu}/>      
+                        <Player leState={this.state} func={this.jeu} />
                     </Row>
                 </Container>
 
