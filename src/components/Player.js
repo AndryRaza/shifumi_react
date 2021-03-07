@@ -13,21 +13,30 @@ const Player = (props) => {
         { name: 'Ciseaux', value: 2, img: paper }
     ]
 
-        return (
-            <>
-                {
-                    coup.map((elt, index) => {
-                        return (
-                            <Col key={index} >
-                                <button onClick={() => props.func(elt.img)}>
-                                    <img src={elt.img} alt={elt.name} />
-                                </button>
-                            </Col>
-                        )
-                    })
-                }
-            </>
-        )
+    var coup_ia;
+    //Fonction random ([| 0;max |[)
+    getRandomInt = (max) => {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    /* Créer deux variables : coup_ia et valeur_coup_ia, faire un map sur coup et checker si value === getRandomInt, si oui alors on remplit les deux variables avec 
+    respectivement l'image et la value */
+
+    return (
+        <>
+            {
+                coup.map((elt, index) => {
+                    return (
+                        <Col key={index} >
+                            <button onClick={() => props.func(elt.img)}>
+                                <img src={elt.img} alt={elt.name} />
+                            </button>
+                        </Col>
+                    )
+                })
+            }
+        </>
+    )
 
 }
 

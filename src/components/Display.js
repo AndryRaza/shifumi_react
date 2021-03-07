@@ -12,9 +12,10 @@ class Display extends Component {
     }
 
     //Fonction pour afficher le choix du coup du joueur
-    choix = (param) => {
+    jeu = (coup_joueur,coup_ia) => {
+
         this.setState({
-            ecran:[{ img: param, light: ['black', 'black', 'black'] }, { img: null, light: ['black', 'black', 'black'] }]
+            ecran:[{ img: coup_joueur, light: ['black', 'black', 'black'] }, { img: null, light: ['black', 'black', 'black'] }]
         })
       
     };
@@ -40,7 +41,7 @@ class Display extends Component {
 
                 <Container className="mt-5">
                     <Row className="row-cols-3" >
-                        <Player leState={this.state} func={this.choix}/>
+                        <Player leState={this.state} func={this.jeu}/>      
                     </Row>
                 </Container>
 
@@ -48,5 +49,8 @@ class Display extends Component {
         )
     }
 }
+
+
+// On fait passer la fonction jeu (qui vient du parent) comme un props pour que l'enfant puisse l'utiliser
 
 export default Display;

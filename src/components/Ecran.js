@@ -11,7 +11,7 @@ const Ecran = ({ img, light }) => {
             <div className="d-flex justify-content-center mt-5">
                 {light.map((elt, index) => {
                     return (
-                        <div key={index} className="led" style={{ backgroundColor: elt }}></div>
+                        <div key={index} className="led mx-2" style={{ backgroundColor: elt }}></div>
                     )
                 })}
             </div>
