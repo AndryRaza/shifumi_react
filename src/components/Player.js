@@ -21,6 +21,19 @@ const Player = (props) => {
 
     /* Créer deux variables : coup_ia et valeur_coup_ia, faire un map sur coup et checker si value === getRandomInt, si oui alors on remplit les deux variables avec 
     respectivement l'image et la value */
+    var valeur_coup_ia = getRandomInt(3);
+
+    // coup.map(elt => {
+    //   if (elt.value === valeur_coup_ia){
+
+    //       return (elt.img)
+    //   }
+    // });
+
+    for (var i = 0; i < coup.length; i++) {
+        if (coup[i]['value'] === valeur_coup_ia)
+           coup_ia = coup[i]['img']
+    }
 
     return (
         <>
@@ -28,7 +41,7 @@ const Player = (props) => {
                 coup.map((elt, index) => {
                     return (
                         <Col key={index} >
-                            <button onClick={() => props.func(elt.img)}>
+                            <button onClick={() => props.func(elt.img, coup_ia)}>
                                 <img src={elt.img} alt={elt.name} />
                             </button>
                         </Col>

@@ -15,7 +15,7 @@ class Display extends Component {
     jeu = (coup_joueur, coup_ia) => {
 
         this.setState({
-            ecran: [{ img: coup_joueur, light: ['black', 'black', 'black'] }, { img: null, light: ['black', 'black', 'black'] }]
+            ecran: [{ img: coup_joueur, light: ['black', 'black', 'black'] }, { img: coup_ia, light: ['black', 'black', 'black'] }]
         })
 
     };
