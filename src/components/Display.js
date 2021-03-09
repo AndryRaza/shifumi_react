@@ -4,14 +4,17 @@ import Ecran from './Ecran';
 import Player from './Player';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 
 class Display extends Component {
 
     state = {
         ecran: [{ img: null, light: ['black', 'black', 'black'] }, { img: null, light: ['black', 'black', 'black'] }],
         score_joueur:0,
-        score_ia:0
+        score_ia:0,
+        playable:true
     }
+
 
     //On allume les led, c'est à dire on remplace les black par yellow
     allumer = (nbre) => {
@@ -33,12 +36,19 @@ class Display extends Component {
 
         //Si le joueur gagne
         if ((valeur_joueur === 0 && valeur_ia === 1) || (valeur_joueur === 1 && valeur_ia === 2) || (valeur_joueur === 2 && valeur_ia === 0)) {
-            this.state.score_joueur++;
+            let score = this.state.score_joueur + 1;
+           this.setState({
+               score_joueur:score
+           })
+            
         };
 
         //Si l'ordinateur gagne 
         if ((valeur_joueur === 1 && valeur_ia === 0) || (valeur_joueur === 2 && valeur_ia === 1) || (valeur_joueur === 0 && valeur_ia === 2)) {
-            this.state.score_ia++;
+            let score = this.state.score_ia + 1;
+            this.setState({
+                score_ia:score
+            })
         };
 
         this.setState({
@@ -47,6 +57,14 @@ class Display extends Component {
 
 
     };
+
+    reset = () => {
+        this.setState({
+            ecran: [{ img: null, light: ['black', 'black', 'black'] }, { img: null, light: ['black', 'black', 'black'] }],
+            score_joueur:0,
+            score_ia:0
+        })
+    }
 
     render() {
         return (
@@ -71,6 +89,10 @@ class Display extends Component {
                     <Row className="row-cols-3" >
                         <Player leState={this.state} func={this.jeu} />
                     </Row>
+                </Container>
+
+                <Container className="mt-5">
+                    <Button variant="warning" onClick={this.reset}>Reset</Button>
                 </Container>
 
             </>
