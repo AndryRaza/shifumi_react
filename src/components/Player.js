@@ -30,6 +30,8 @@ const Player = (props) => {
            coup_ia = coup[i]['img']
     }
 
+    
+
     return (
         <>
             {

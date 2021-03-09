@@ -8,43 +8,43 @@ import Row from 'react-bootstrap/Row';
 class Display extends Component {
 
     state = {
-        ecran: [{ img: null, light: ['black', 'black', 'black'] }, { img: null, light: ['black', 'black', 'black'] }]
+        ecran: [{ img: null, light: ['black', 'black', 'black'] }, { img: null, light: ['black', 'black', 'black'] }],
+        score_joueur:0,
+        score_ia:0
     }
 
-    //Fonction pour compter les points, enfin le nbre de led éteint(s) (c'est-à-dire "black")
-    count = (tab) => {
-        var nbre = 0;
-        for(var i=0;i < tab.length ; i++){
-            if (tab[i] === "black"){
-                nbre++;
+    //On allume les led, c'est à dire on remplace les black par yellow
+    allumer = (nbre) => {
+        let tab = Array(3);
+        for (let i = 0; i < tab.length; i++) {
+            if (nbre > 0) {
+                tab[i] = 'yellow';
+                nbre--;
+            }
+            else {
+                tab[i] = 'black';
             }
         }
-
-        return nbre;
-    }
-
-    allumer = (tab,pos) => {
-        tab[pos-1] = "yellow";
         return tab;
     }
 
     //Fonction pour afficher le choix du coup du joueur
     jeu = (coup_joueur, valeur_joueur, coup_ia, valeur_ia) => {
+
         //Si le joueur gagne
-        
-        if ((valeur_joueur === 0 && valeur_ia === 1) || (valeur_joueur === 1 && valeur_ia === 2)  || (valeur_joueur === 2 && valeur_ia === 0)){
-           var pos_joueur = this.count(this.state.ecran[0]['light']);
+        if ((valeur_joueur === 0 && valeur_ia === 1) || (valeur_joueur === 1 && valeur_ia === 2) || (valeur_joueur === 2 && valeur_ia === 0)) {
+            this.state.score_joueur++;
         };
 
-        //Si l'ia perd 
-        if ((valeur_joueur === 1 && valeur_ia === 0) || (valeur_joueur === 2 && valeur_ia === 1)  || (valeur_joueur === 0 && valeur_ia === 2)){
-            var pos_ia = this.count(this.state.ecran[1]['light']);
-         };
-
+        //Si l'ordinateur gagne 
+        if ((valeur_joueur === 1 && valeur_ia === 0) || (valeur_joueur === 2 && valeur_ia === 1) || (valeur_joueur === 0 && valeur_ia === 2)) {
+            this.state.score_ia++;
+        };
 
         this.setState({
-            ecran: [{ img: coup_joueur,light : this.allumer(this.state.ecran[0].light,pos_joueur) }, { img: coup_ia, light : this.allumer(this.state.ecran[0].light,pos_ia)}]
+            ecran: [{ img: coup_joueur, light: this.allumer(this.state.score_joueur) }, { img: coup_ia, light: this.allumer(this.state.score_ia) }]
         })
+
 
     };
 
