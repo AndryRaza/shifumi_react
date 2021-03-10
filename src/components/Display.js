@@ -55,7 +55,6 @@ class Display extends Component {
             ecran: [{ img: coup_joueur, light: this.allumer(this.state.score_joueur) }, { img: coup_ia, light: this.allumer(this.state.score_ia) }]
         })
 
-
     };
 
     reset = () => {
